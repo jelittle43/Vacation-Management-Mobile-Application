@@ -114,6 +114,10 @@ public class Repository {
 
     }
 
+    public List<Vacation> searchVacationsByName(String name) {
+        return mVacationDAO.searchVacationsByName(name);
+    }
+
 }
 
 

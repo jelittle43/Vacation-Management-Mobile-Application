@@ -121,15 +121,14 @@ public class Repository {
     }
 
     public Vacation getVacationById(int vacationId) {
-        // Using the databaseExecutor to perform the operation on a background thread
+
         Future<Vacation> future = databaseExecutor.submit(() -> mVacationDAO.getVacationById(vacationId));
 
         try {
-            // Get the result from the background thread
             return future.get();
         } catch (InterruptedException | ExecutionException e) {
             e.printStackTrace();
-            return null; // Handle the error appropriately
+            return null;
         }
     }
 }

@@ -7,21 +7,25 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.os.Environment;
 import android.os.Handler;
 import android.os.Looper;
+import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Toast;
 
+
+
 import com.example.capstone.R;
 import com.example.capstone.database.Repository;
+import com.example.capstone.entities.Excursion;
 import com.example.capstone.entities.Vacation;
+import com.example.capstone.entities.PdfGenerator;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
 import java.util.List;
 import java.util.Objects;
-
-
 import java.util.concurrent.Executor;
 import java.util.concurrent.Executors;
 
@@ -115,11 +119,30 @@ public class VacationList extends AppCompatActivity {
     }
 
     @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        getMenuInflater().inflate(R.menu.menu_vacationlist, menu);
+        return true;
+    }
+
+    @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         if (item.getItemId() == android.R.id.home) {
             this.finish();
             return true;
+        } else if (item.getItemId() == R.id.generatepdf) {
+            exportVacationsToPdf();
+            return true;
         }
         return super.onOptionsItemSelected(item);
+    }
+
+    private void exportVacationsToPdf() {
+        List<Vacation> allVacations = repository.getAllVacations();
+        List<Excursion> allExcursions = repository.getAllExcursions();
+
+        String filePath = Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_DOWNLOADS) + "/vacations_report.pdf";
+        PdfGenerator.generateVacationsReport(allVacations, allExcursions, filePath);
+
+        showToast("PDF generated successfully and saved to Downloads folder.");
     }
 }

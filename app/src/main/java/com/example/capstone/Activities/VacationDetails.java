@@ -10,7 +10,6 @@ import android.app.PendingIntent;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
-import android.os.Environment;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -21,7 +20,6 @@ import android.widget.Toast;
 import com.example.capstone.R;
 import com.example.capstone.database.Repository;
 import com.example.capstone.entities.Excursion;
-import com.example.capstone.entities.PdfGenerator;
 import com.example.capstone.entities.Vacation;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
@@ -148,7 +146,7 @@ public class VacationDetails extends AppCompatActivity {
     }
 
     private void updateLabelStart() {
-        String myFormat = "MM/dd/yy"; //In which you need put here
+        String myFormat = "MM/dd/yy";
         SimpleDateFormat sdf = new SimpleDateFormat(myFormat, Locale.US);
         editStartDate.setText(sdf.format(myCalendarStart.getTime()));
     }
@@ -165,32 +163,143 @@ public class VacationDetails extends AppCompatActivity {
     }
 
     public boolean onOptionsItemSelected(MenuItem item) {
-        // Inside onOptionsItemSelected method
-        if (item.getItemId() == R.id.generatepdf) {
-            // Generate PDF
-            String filePath = Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_DOWNLOADS) + "/vacation_report.pdf";
-
-            // Retrieve the currentVacation object from the repository
-            currentVacation = repository.getVacationById(vacationID);
-
-            // Check if currentVacation and filteredExcursions are not null before generating the PDF
-            if (currentVacation != null && filteredExcursions != null) {
-                PdfGenerator.generateVacationReport(currentVacation, filteredExcursions, filePath);
-                Toast.makeText(VacationDetails.this, "PDF generated successfully and saved to: " + filePath, Toast.LENGTH_LONG).show();
-            } else {
-                Toast.makeText(VacationDetails.this, "Error generating PDF. Please try again.", Toast.LENGTH_LONG).show();
-            }
-
-            return true;
-        }
-
-
         if (item.getItemId() == android.R.id.home) {
             this.finish();
             return true;
         }
 
-        // Other existing code...
+        if (item.getItemId() == R.id.vacationsave) {
+            Vacation vacation;
+            String name = editName.getText().toString();
+            String hotel = editHotel.getText().toString();
+            String startDate = editStartDate.getText().toString();
+            String endDate = editEndDate.getText().toString();
+
+
+            if (!isValidDateFormat(startDate) || !isValidDateFormat(endDate)) {
+
+                Toast.makeText(VacationDetails.this, "Invalid date format. Please use MM/dd/yy", Toast.LENGTH_LONG).show();
+                return true;
+            }
+            if (!isEndDateAfterStartDate(startDate, endDate)) {
+
+                Toast.makeText(VacationDetails.this, "End date must be after start date", Toast.LENGTH_LONG).show();
+                return true;
+            }
+
+
+
+            if (vacationID == -1) {
+                if (repository.getAllVacations().size() == 0) vacationID = 1;
+                else
+                    vacationID = repository.getAllVacations().get(repository.getAllVacations().size() - 1).getVacationID() + 1;
+
+                vacation = new Vacation(vacationID, name, hotel, startDate, endDate);
+                repository.insert(vacation);
+                Toast.makeText(VacationDetails.this, "Vacation Saved", Toast.LENGTH_LONG).show();
+            } else {
+                try {
+                    vacation = new Vacation(vacationID, name, hotel, startDate, endDate);
+                    repository.update(vacation);
+                    Toast.makeText(VacationDetails.this, "Vacation Updated", Toast.LENGTH_LONG).show();
+                } catch (Exception e) {
+
+                }
+            }
+
+            finish();
+            return true;
+        }
+
+        if (item.getItemId() == R.id.vacationdelete) {
+            for (Vacation vac : repository.getAllVacations()) {
+                if (vac.getVacationID() == vacationID) currentVacation = vac;
+            }
+
+            numExcursions = 0;
+            for (Excursion excursion : repository.getAllExcursions()) {
+                if (excursion.getVacationID() == vacationID) ++numExcursions;
+            }
+
+            if (numExcursions == 0) {
+                repository.delete(currentVacation);
+                Toast.makeText(VacationDetails.this, currentVacation.getVacationName() + " was deleted", Toast.LENGTH_LONG).show();
+            } else {
+                Toast.makeText(VacationDetails.this, "Can't delete a vacation with excursions", Toast.LENGTH_LONG).show();
+            }
+
+            finish();
+            return true;
+        }
+
+        if (item.getItemId() == R.id.startnotification) {
+            String dateFromScreen = editStartDate.getText().toString();
+            String myFormat = "MM/dd/yy";
+            SimpleDateFormat sdf = new SimpleDateFormat(myFormat, Locale.US);
+            Date myDate = null;
+            try {
+                myDate = sdf.parse(dateFromScreen);
+            } catch (ParseException e) {
+                e.printStackTrace();
+            }
+
+            notificationId = random.nextInt(1000) + 1;
+
+            try{
+                Long trigger = myDate.getTime();
+                Intent intent = new Intent(VacationDetails.this, MyReceiver.class);
+                intent.putExtra("key", name + " is starting");
+                PendingIntent sender = PendingIntent.getBroadcast(VacationDetails.this, notificationId, intent, PendingIntent.FLAG_IMMUTABLE);
+                AlarmManager alarmManager = (AlarmManager) getSystemService(Context.ALARM_SERVICE);
+                alarmManager.set(AlarmManager.RTC_WAKEUP, trigger, sender);}
+            catch (Exception e){
+                e.printStackTrace();
+            }
+
+            Toast.makeText(VacationDetails.this, "Start notification scheduled", Toast.LENGTH_SHORT).show();
+            return true;
+        }
+
+        if (item.getItemId() == R.id.endnotification) {
+            String dateFromScreen = editEndDate.getText().toString();
+            String myFormat = "MM/dd/yy";
+            SimpleDateFormat sdf = new SimpleDateFormat(myFormat, Locale.US);
+            Date myDate = null;
+            try {
+                myDate = sdf.parse(dateFromScreen);
+            } catch (ParseException e) {
+                e.printStackTrace();
+            }
+
+            notificationId = random.nextInt(1000) + 1;
+
+            try{
+                Long trigger = myDate.getTime();
+                Intent intent = new Intent(VacationDetails.this, MyReceiver.class);
+                intent.putExtra("key", name + " is ending");
+                PendingIntent sender = PendingIntent.getBroadcast(VacationDetails.this, notificationId, intent, PendingIntent.FLAG_IMMUTABLE);
+                AlarmManager alarmManager = (AlarmManager) getSystemService(Context.ALARM_SERVICE);
+                alarmManager.set(AlarmManager.RTC_WAKEUP, trigger, sender);}
+            catch (Exception e){
+                e.printStackTrace();
+            }
+            Toast.makeText(VacationDetails.this, "End notification scheduled", Toast.LENGTH_SHORT).show();
+            return true;
+        }
+
+        if(item.getItemId()== R.id.share) {
+            Intent sendIntent = new Intent();
+            sendIntent.setAction(Intent.ACTION_SEND);
+            sendIntent.putExtra(Intent.EXTRA_TEXT, editName.getText().toString() + " " + editHotel.getText().toString() + " " +
+                    editStartDate.getText().toString() + " " + editEndDate.getText().toString());
+            sendIntent.putExtra(Intent.EXTRA_TITLE, "Sending Vacation Details");
+            sendIntent.setType("text/plain");
+
+            Intent shareIntent = Intent.createChooser(sendIntent, null);
+            startActivity(shareIntent);
+            return true;
+        }
+
 
         return super.onOptionsItemSelected(item);
     }

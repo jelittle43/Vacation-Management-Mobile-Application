@@ -17,4 +17,7 @@
     <item android:title="Share Vacation"
         android:id="@+id/share"/>
 
+    <item android:title="Generate PDF"
+        android:id="@+id/generatepdf"/>
+
 </menu>

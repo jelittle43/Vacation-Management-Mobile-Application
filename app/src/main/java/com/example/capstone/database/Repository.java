@@ -8,8 +8,10 @@ import com.example.capstone.entities.Excursion;
 import com.example.capstone.entities.Vacation;
 
 import java.util.List;
+import java.util.concurrent.ExecutionException;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
+import java.util.concurrent.Future;
 
 public class Repository {
     private ExcursionDAO mExcursionDAO;
@@ -118,7 +120,21 @@ public class Repository {
         return mVacationDAO.searchVacationsByName(name);
     }
 
+    public Vacation getVacationById(int vacationId) {
+        // Using the databaseExecutor to perform the operation on a background thread
+        Future<Vacation> future = databaseExecutor.submit(() -> mVacationDAO.getVacationById(vacationId));
+
+        try {
+            // Get the result from the background thread
+            return future.get();
+        } catch (InterruptedException | ExecutionException e) {
+            e.printStackTrace();
+            return null; // Handle the error appropriately
+        }
+    }
 }
+
+
 
 
 

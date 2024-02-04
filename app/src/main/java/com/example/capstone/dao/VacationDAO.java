@@ -28,5 +28,9 @@ public interface VacationDAO {
     @Query("SELECT * FROM vacations WHERE vacationName LIKE '%' || :name || '%'")
     List<Vacation> searchVacationsByName(String name);
 
+    @Query("SELECT * FROM vacations WHERE vacationID = :vacationId")
+    Vacation getVacationById(int vacationId);
+
+
 
 }

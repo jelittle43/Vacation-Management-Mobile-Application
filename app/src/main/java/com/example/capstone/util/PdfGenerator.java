@@ -1,7 +1,9 @@
-package com.example.capstone.entities;
+package com.example.capstone.util;
 
 
 
+import com.example.capstone.entities.Excursion;
+import com.example.capstone.entities.Vacation;
 import com.itextpdf.io.font.FontConstants;
 import com.itextpdf.kernel.font.PdfFont;
 import com.itextpdf.kernel.font.PdfFontFactory;

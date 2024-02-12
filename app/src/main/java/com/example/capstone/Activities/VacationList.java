@@ -21,7 +21,7 @@ import com.example.capstone.R;
 import com.example.capstone.database.Repository;
 import com.example.capstone.entities.Excursion;
 import com.example.capstone.entities.Vacation;
-import com.example.capstone.entities.PdfGenerator;
+import com.example.capstone.util.PdfGenerator;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
 import java.util.List;

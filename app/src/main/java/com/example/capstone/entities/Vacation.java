@@ -3,6 +3,8 @@ package com.example.capstone.entities;
 import androidx.room.Entity;
 import androidx.room.PrimaryKey;
 
+//encapsulation
+
 @Entity(tableName ="vacations")
 public class Vacation {
     @PrimaryKey(autoGenerate=true)

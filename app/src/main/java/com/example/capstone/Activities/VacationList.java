@@ -29,6 +29,7 @@ import java.util.Objects;
 import java.util.concurrent.Executor;
 import java.util.concurrent.Executors;
 
+//inheritance
 public class VacationList extends AppCompatActivity {
     private Repository repository;
     private VacationAdapter vacationAdapter;
@@ -50,6 +51,8 @@ public class VacationList extends AppCompatActivity {
                 startActivity(intent);
             }
         });
+
+        //polymorphism
 
         searchView = findViewById(R.id.searchView);
         RecyclerView recyclerView = findViewById(R.id.recyclerview);

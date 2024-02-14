@@ -11,6 +11,8 @@ import com.example.capstone.dao.VacationDAO;
 import com.example.capstone.entities.Excursion;
 import com.example.capstone.entities.Vacation;
 
+
+//a database component with the functionality to securely add, modify, and delete the data
 @Database(entities = {Excursion.class, Vacation.class}, version=11, exportSchema = false)
 public abstract class TravelDatabaseBuilder extends RoomDatabase {
     public abstract VacationDAO vacationDAO();

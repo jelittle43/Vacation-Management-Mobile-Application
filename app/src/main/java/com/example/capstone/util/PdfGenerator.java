@@ -24,6 +24,7 @@ import java.util.Date;
 import java.util.List;
 import java.util.Locale;
 
+//ability to generate reports with multiple columns, multiple rows, date-time stamps, and title
 public class PdfGenerator {
 
     private static PdfFont font;

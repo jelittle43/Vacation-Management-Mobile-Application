@@ -32,7 +32,7 @@ import java.util.List;
 import java.util.Locale;
 import java.util.Random;
 
-
+//a user-friendly, functional GUI
 //validation functionality
 public class VacationDetails extends AppCompatActivity {
 

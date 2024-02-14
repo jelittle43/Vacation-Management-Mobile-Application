@@ -94,10 +94,9 @@ public class ExcursionDetails extends AppCompatActivity {
         ArrayAdapter<String> vacationNameAdapter= new ArrayAdapter<String>(this, android.R.layout.simple_spinner_item,vacationNameList);
         Spinner spinner=findViewById(R.id.spinner);
         spinner.setAdapter(vacationNameAdapter);
+        // design elements that make the application scalable
 
-
-
-        }
+    }
 
     private void updateLabelStart() {
         String myFormat = "MM/dd/yy";

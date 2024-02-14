@@ -30,6 +30,8 @@ import java.util.concurrent.Executor;
 import java.util.concurrent.Executors;
 
 //inheritance
+
+//search functionality with multiple row results and displays
 public class VacationList extends AppCompatActivity {
     private Repository repository;
     private VacationAdapter vacationAdapter;

@@ -11,6 +11,10 @@ import com.example.capstone.entities.Excursion;
 
 import java.util.List;
 
+//industry-appropriate security features
+//Room provides built-in protection against SQL injection attacks through the use of SQL
+// queries as annotations in DAO (Data Access Object) interfaces
+
 @Dao
 public interface ExcursionDAO {
     @Insert(onConflict = OnConflictStrategy.IGNORE)

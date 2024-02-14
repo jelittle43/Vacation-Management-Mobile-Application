@@ -32,6 +32,8 @@ import java.util.List;
 import java.util.Locale;
 import java.util.Random;
 
+
+//validation functionality
 public class VacationDetails extends AppCompatActivity {
 
     Random random = new Random();

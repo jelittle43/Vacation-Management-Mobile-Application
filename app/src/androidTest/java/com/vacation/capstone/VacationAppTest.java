@@ -1,4 +1,4 @@
-package com.example.capstone;
+package com.vacation.capstone;
 
 
 import androidx.test.espresso.contrib.RecyclerViewActions;
@@ -9,7 +9,7 @@ import androidx.test.ext.junit.rules.ActivityScenarioRule;
 import androidx.test.internal.runner.junit4.AndroidJUnit4ClassRunner;
 import androidx.test.platform.app.InstrumentationRegistry;
 
-import com.example.capstone.Activities.VacationList;
+import com.vacation.capstone.Activities.VacationList;
 
 
 import org.junit.Rule;
@@ -21,7 +21,6 @@ import org.junit.runner.RunWith;
 import static androidx.test.espresso.Espresso.openActionBarOverflowOrOptionsMenu;
 import static androidx.test.espresso.action.ViewActions.clearText;
 
-import static androidx.test.espresso.assertion.ViewAssertions.doesNotExist;
 import static androidx.test.espresso.matcher.ViewMatchers.hasDescendant;
 import static androidx.test.espresso.matcher.ViewMatchers.isDisplayed;
 import static androidx.test.espresso.matcher.ViewMatchers.withId;
@@ -31,8 +30,6 @@ import static androidx.test.espresso.action.ViewActions.click;
 import static androidx.test.espresso.action.ViewActions.closeSoftKeyboard;
 import static androidx.test.espresso.action.ViewActions.typeText;
 import static androidx.test.platform.app.InstrumentationRegistry.getInstrumentation;
-
-import android.content.Context;
 
 @RunWith(AndroidJUnit4ClassRunner.class)
 public class VacationAppTest {

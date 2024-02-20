@@ -1,4 +1,4 @@
-package com.example.capstone;
+package com.vacation.capstone;
 
 import android.content.Context;
 

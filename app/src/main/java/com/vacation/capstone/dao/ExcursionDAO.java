@@ -1,4 +1,4 @@
-package com.example.capstone.dao;
+package com.vacation.capstone.dao;
 
 import androidx.room.Dao;
 import androidx.room.Delete;
@@ -7,7 +7,7 @@ import androidx.room.OnConflictStrategy;
 import androidx.room.Query;
 import androidx.room.Update;
 
-import com.example.capstone.entities.Excursion;
+import com.vacation.capstone.entities.Excursion;
 
 import java.util.List;
 

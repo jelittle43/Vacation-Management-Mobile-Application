@@ -1,4 +1,4 @@
-package com.example.capstone.Activities;
+package com.vacation.capstone.Activities;
 
 import static android.content.Context.NOTIFICATION_SERVICE;
 
@@ -13,7 +13,8 @@ import android.widget.Toast;
 
 import androidx.core.app.NotificationCompat;
 
-import com.example.capstone.R;
+import com.vacation.capstone.R;
+
 
 public class MyReceiver extends BroadcastReceiver {
     String channel_id = "test";

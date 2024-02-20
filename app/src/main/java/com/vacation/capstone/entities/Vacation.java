@@ -1,4 +1,4 @@
-package com.example.capstone.entities;
+package com.vacation.capstone.entities;
 
 import androidx.room.Entity;
 import androidx.room.PrimaryKey;

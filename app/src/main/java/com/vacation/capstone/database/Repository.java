@@ -1,11 +1,11 @@
-package com.example.capstone.database;
+package com.vacation.capstone.database;
 
 import android.app.Application;
 
-import com.example.capstone.dao.ExcursionDAO;
-import com.example.capstone.dao.VacationDAO;
-import com.example.capstone.entities.Excursion;
-import com.example.capstone.entities.Vacation;
+import com.vacation.capstone.dao.ExcursionDAO;
+import com.vacation.capstone.dao.VacationDAO;
+import com.vacation.capstone.entities.Excursion;
+import com.vacation.capstone.entities.Vacation;
 
 import java.util.List;
 import java.util.concurrent.ExecutionException;

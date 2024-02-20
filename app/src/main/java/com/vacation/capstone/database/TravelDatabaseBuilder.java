@@ -1,4 +1,4 @@
-package com.example.capstone.database;
+package com.vacation.capstone.database;
 
 import android.content.Context;
 
@@ -6,14 +6,14 @@ import androidx.room.Database;
 import androidx.room.Room;
 import androidx.room.RoomDatabase;
 
-import com.example.capstone.dao.ExcursionDAO;
-import com.example.capstone.dao.VacationDAO;
-import com.example.capstone.entities.Excursion;
-import com.example.capstone.entities.Vacation;
+import com.vacation.capstone.dao.ExcursionDAO;
+import com.vacation.capstone.dao.VacationDAO;
+import com.vacation.capstone.entities.Excursion;
+import com.vacation.capstone.entities.Vacation;
 
 
 //a database component with the functionality to securely add, modify, and delete the data
-@Database(entities = {Excursion.class, Vacation.class}, version=11, exportSchema = false)
+@Database(entities = {Excursion.class, Vacation.class}, version=12, exportSchema = false)
 public abstract class TravelDatabaseBuilder extends RoomDatabase {
     public abstract VacationDAO vacationDAO();
     public abstract ExcursionDAO excursionDAO();

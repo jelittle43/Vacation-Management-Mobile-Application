@@ -1,4 +1,4 @@
-package com.example.capstone.Activities;
+package com.vacation.capstone.Activities;
 
 import android.content.Context;
 import android.content.Intent;
@@ -10,8 +10,9 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.example.capstone.R;
-import com.example.capstone.entities.Excursion;
+
+import com.vacation.capstone.R;
+import com.vacation.capstone.entities.Excursion;
 
 import java.util.List;
 

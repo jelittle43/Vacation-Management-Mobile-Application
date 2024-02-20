@@ -1,4 +1,4 @@
-package com.example.capstone.Activities;
+package com.vacation.capstone.Activities;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.SearchView;
@@ -17,11 +17,11 @@ import android.widget.Toast;
 
 
 
-import com.example.capstone.R;
-import com.example.capstone.database.Repository;
-import com.example.capstone.entities.Excursion;
-import com.example.capstone.entities.Vacation;
-import com.example.capstone.util.PdfGenerator;
+import com.vacation.capstone.R;
+import com.vacation.capstone.database.Repository;
+import com.vacation.capstone.entities.Excursion;
+import com.vacation.capstone.entities.Vacation;
+import com.vacation.capstone.util.PdfGenerator;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
 import java.util.List;

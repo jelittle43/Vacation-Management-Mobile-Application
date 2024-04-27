@@ -1,29 +1,33 @@
-<strong>**DO NOT DISTRIBUTE OR PUBLICLY POST SOLUTIONS TO THESE LABS. MAKE ALL FORKS OF THIS REPOSITORY WITH SOLUTION CODE PRIVATE. PLEASE REFER TO THE STUDENT CODE OF CONDUCT AND ETHICAL EXPECTATIONS FOR COLLEGE OF INFORMATION TECHNOLOGY STUDENTS FOR SPECIFICS. **</strong>
+# Vacation Management Mobile Application
 
-# WESTERN GOVERNOR UNIVERSITY 
-## D424 – SOFTWARE ENGINEERING CAPSTONE
-Welcome to Software Engineering Capstone! This is an opportunity for students to develop full stack software engineering documentation and applications. They will execute documentation, unit testing, revision of software applications, and deploy software applications with scripts and containers on a cloud platform.
+## Overview
+The Vacation Management Mobile Application is a comprehensive tool designed to streamline the process of planning, organizing, and tracking vacations and associated excursions. This application provides users with a user-friendly interface to manage vacation details, including titles, locations, start dates, and end dates, as well as excursions with titles and dates. Key functionalities include alert notifications, sharing features, excursion management, search functionality, and reporting features.
 
-FOR SPECIFIC TASK INSTRUCTIONS AND REQUIREMENTS FOR THIS ASSESSMENT, PLEASE REFER TO THE COURSE PAGE.
-BASIC INSTRUCTIONS
-For this assessment, you will deploy your developed full stack software product to a web service of your choice.
+## Features
+- **User-friendly Interfaces:** Intuitive interfaces for adding, updating, and deleting vacations and excursions, ensuring smooth navigation and interaction.
+- **Validation Checks:** Implementation of validation checks to ensure correct date formats and maintain consistency in vacation date entries.
+- **Alert Notifications:** Alert notifications for vacation start and end dates, enhancing user experience and ensuring timely reminders.
+- **Sharing Features:** Features enabling users to share vacation details via email or SMS directly from the app.
+- **Excursion Management:** Enable users to manage excursions associated with each vacation, supporting additions, updates, and deletions.
+- **Search Functionality:** Integration of a search functionality for quick location of specific vacations based on titles.
+- **Reporting Feature:** Development of a reporting feature that generates detailed PDF reports for vacation details, facilitating comprehensive analysis and planning.
 
+## Technologies Used
+- **Platform:** Android
+- **Programming Language:** Java
+- **Database:** SQLite
+- **Framework:** Room Framework
 
-## SUPPLEMENTAL RESOURCES  
-1.	How to clone a project to IntelliJ using Git?
+## Installation
+To install and run the Vacation Management Mobile Application on your Android device, follow these steps:
+1. Clone the repository
+2. Open the project in Android Studio.
+3. Build and run the application on your Android device or emulator.
 
-> Ensure that you have Git installed on your system and that IntelliJ is installed using [Toolbox](https://www.jetbrains.com/toolbox-app/). Make sure that you are using version 2022.3.2. Once this has been confirmed, click the clone button and use the 'IntelliJ IDEA (HTTPS)' button. This will open IntelliJ with a prompt to clone the proejct. Save it in a safe location for the directory and press clone. IntelliJ will prompt you for your credentials. Enter in your WGU Credentials and the project will be cloned onto your local machine.  
+## Usage
+1. Upon launching the application, you will be presented with the main screen displaying a list of vacations.
+2. Use the intuitive user interface to add, update, or delete vacation details.
+3. Manage excursions associated with each vacation by adding, updating, or deleting excursion details.
+4. Utilize the search functionality to quickly locate specific vacations based on titles.
+5. Generate detailed PDF reports for vacation details using the reporting feature.
 
-2. How to create a branch and start Development?
-
-- GitLab method
-> Press the '+' button located near your branch name. In the dropdown list, press the 'New branch' button. This will allow you to create a name for your branch. Once the branch has been named, you can select 'Create Branch' to push the branch to your repository.
-
-- IntelliJ method
-> In IntelliJ, Go to the 'Git' button on the top toolbar. Select the new branch option and create a name for the branch. Make sure checkout branch is selected and press create. You can now add a commit message and push the new branch to the local repo.
-
-## SUPPORT
-If you need additional support, please navigate to the course page and reach out to your course instructor.
-
-## FUTURE USE
-Take this opportunity to create or add to a simple resume portfolio to highlight and showcase your work for future use in career search, experience, and education!
